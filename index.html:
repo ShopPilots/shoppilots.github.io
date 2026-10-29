@@ -138,7 +138,7 @@ function saveData() {
     console.error("Could not save ShopPilot data", error);
   }
 }
-}function loadSavedData()
+function loadSavedData() { 
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
     if (!saved) return;
