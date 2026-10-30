@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ShopPilot — Business, under control</title>
+<style>
+
+:root{--navy:#17212B;--green:#FF6B00;--lime:#FFB000;--bg:#FFF8F1;--card:#fff;--text:#17212B;--muted:#77736F;--line:#F0E3D8;--soft:#FFF0E3;--red:#D94F45;--shadow:0 8px 28px rgba(60,35,15,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,select{font:inherit}button{cursor:pointer}.app{display:flex;min-height:100vh}.sidebar{width:236px;background:var(--navy);color:#fff;padding:25px 15px;display:flex;flex-direction:column;flex-shrink:0}.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:20px;letter-spacing:-.6px;padding:0 10px 30px}.logo{display:grid;place-items:center;width:34px;height:34px;border-radius:11px;background:var(--lime);color:var(--navy);font-weight:900}.brand span small{display:block;font-size:10px;font-weight:500;letter-spacing:1.8px;color:#b9c9bf;margin-top:-2px}.nav-label{font-size:10px;letter-spacing:1.5px;color:#9db2a5;padding:0 12px;margin:12px 0 8px}.nav{display:flex;flex-direction:column;gap:4px}.nav button{border:0;background:transparent;color:#d4e0d8;padding:11px 12px;border-radius:10px;text-align:left;display:flex;gap:12px;align-items:center;font-weight:550}.nav button.active,.nav button:hover{background:#28463a;color:#fff}.nav .ico{width:18px;text-align:center;font-size:16px}.side-bottom{margin-top:auto;background:#244438;border-radius:14px;padding:15px;margin-top:30px}.side-bottom b{display:block;font-size:13px}.side-bottom p{font-size:11px;color:#bfd0c5;margin:6px 0 12px}.side-bottom button{background:var(--lime);border:0;border-radius:8px;padding:9px 10px;font-size:11px;font-weight:800;width:100%;color:#17251f}.main{min-width:0;flex:1}.topbar{height:76px;border-bottom:1px solid var(--line);background:rgba(255,255,255,.82);display:flex;align-items:center;justify-content:space-between;padding:0 34px;gap:15px}.crumb{font-size:12px;color:var(--muted)}.crumb b{color:var(--text)}.top-actions{display:flex;align-items:center;gap:13px}.search{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;color:var(--muted);width:190px}.avatar{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#e1eedf;color:#315b43;font-weight:800}.content{max-width:1400px;padding:30px 34px 45px;margin:auto}.welcome{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:25px}.eyebrow{font-size:10px;letter-spacing:1.8px;color:var(--green);font-weight:800;text-transform:uppercase}.h1{font-size:29px;letter-spacing:-1.1px;line-height:1.15;margin:7px 0}.sub{color:var(--muted);font-size:13px}.primary{background:var(--green);color:white;border:0;padding:11px 15px;border-radius:10px;font-weight:700;box-shadow:0 3px 8px #2f765b20}.primary:hover{background:#245f48}.secondary{border:1px solid var(--line);background:white;padding:10px 13px;border-radius:10px;font-weight:650}.actions{display:flex;gap:8px;flex-wrap:wrap}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-bottom:18px}.stat,.panel{background:var(--card);border:1px solid var(--line);border-radius:15px;box-shadow:var(--shadow)}.stat{padding:18px}.stat-top{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:12px}.stat-icon{width:30px;height:30px;border-radius:9px;background:var(--soft);display:grid;place-items:center;color:var(--green)}.stat-num{font-size:25px;font-weight:800;letter-spacing:-.7px;margin:13px 0 5px}.trend{font-size:11px;color:var(--green)}.muted{color:var(--muted)}.layout{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(270px,1fr);gap:16px}.panel{padding:20px;margin-bottom:16px}.panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:18px}.panel-head h2{font-size:15px;margin:0;letter-spacing:-.2px}.panel-head a,.text-btn{font-size:12px;color:var(--green);font-weight:750;cursor:pointer;background:none;border:0}.period{border:1px solid var(--line);border-radius:8px;background:white;padding:7px 9px;color:var(--muted);font-size:11px}.chart{height:185px;position:relative;border-bottom:1px solid var(--line);background:repeating-linear-gradient(to bottom,transparent 0,transparent 44px,#edf1ed 45px,#edf1ed 46px);padding-top:4px}.chart svg{width:100%;height:100%;overflow:visible}.days{display:flex;justify-content:space-between;color:#9aa49e;font-size:10px;margin-top:10px}.legend{display:flex;gap:14px;color:var(--muted);font-size:10px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);margin-right:5px}.dot.lime{background:#b8d958}.list{display:flex;flex-direction:column}.item{display:flex;align-items:center;gap:11px;padding:12px 0;border-bottom:1px solid #eff2ef}.item:last-child{border-bottom:0}.product-icon{width:39px;height:39px;border-radius:11px;background:#f3eee5;display:grid;place-items:center;font-size:18px;flex-shrink:0}.item-main{flex:1;min-width:0}.item-main b{display:block;font-size:12px}.item-main small{display:block;color:var(--muted);font-size:10px;margin-top:3px}.amount{font-weight:750;font-size:12px;text-align:right}.pill{display:inline-block;border-radius:30px;padding:4px 8px;font-size:10px;font-weight:750;background:#edf6ed;color:#32734e}.pill.warn{background:#fff3df;color:#9b6a20}.pill.red{background:#fff0ed;color:#b94f43}.stock-row{display:flex;align-items:center;gap:10px;margin:14px 0}.stock-row .item-main{flex:1}.bar{height:5px;border-radius:10px;background:#eef1ed;overflow:hidden;margin-top:6px}.bar i{height:100%;display:block;border-radius:10px;background:var(--green)}.bar i.low{background:#dca34c}.stock-count{font-size:11px;color:var(--muted);white-space:nowrap}.page{display:none}.page.active{display:block}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;font-size:12px}th{text-align:left;color:var(--muted);font-weight:600;font-size:10px;letter-spacing:.5px;text-transform:uppercase;padding:10px;border-bottom:1px solid var(--line)}td{padding:13px 10px;border-bottom:1px solid #eff2ef}tr:last-child td{border-bottom:0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:6px}.field label{font-size:11px;color:var(--muted);font-weight:700}.field input,.field select{width:100%;border:1px solid var(--line);border-radius:9px;padding:11px;background:white;color:var(--text)}.field.full{grid-column:1/-1}.modal-backdrop{position:fixed;inset:0;background:#10241c80;display:none;align-items:center;justify-content:center;padding:18px;z-index:5}.modal-backdrop.show{display:flex}.modal{width:min(480px,100%);background:white;border-radius:18px;padding:23px;box-shadow:0 20px 80px #0003}.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.modal-head h2{font-size:18px;margin:0}.close{border:0;background:#f2f4f2;border-radius:8px;width:30px;height:30px;font-size:18px}.modal-footer{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}.toast{position:fixed;bottom:22px;right:22px;background:var(--navy);color:white;padding:12px 17px;border-radius:10px;box-shadow:var(--shadow);display:none;z-index:10}.toast.show{display:block}.empty{padding:30px;text-align:center;color:var(--muted)}.store-banner{background:#eaf2e9;border-radius:14px;padding:24px;display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:17px}.store-banner h2{margin:5px 0;font-size:22px}.store-products{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.store-product{border:1px solid var(--line);border-radius:12px;padding:13px;background:white}.store-product .product-icon{width:100%;height:100px;font-size:35px;margin-bottom:10px}.store-product b{display:block}.store-product small{color:var(--muted)}.store-product strong{display:block;margin-top:8px}.mobile-menu{display:none}
+@media(max-width:1000px){.sidebar{width:205px}.content{padding:24px 22px}.topbar{padding:0 22px}.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.layout{grid-template-columns:1fr}.right-column{display:grid;grid-template-columns:1fr 1fr;gap:15px}.right-column .panel{margin-bottom:0}}
+@media(max-width:680px){.app{display:block}.sidebar{width:100%;padding:12px 14px;display:block}.brand{padding:0 4px 12px;font-size:18px}.brand .logo{width:30px;height:30px}.nav-label,.side-bottom{display:none}.nav{flex-direction:row;overflow:auto;padding-bottom:2px}.nav button{white-space:nowrap;padding:8px 10px;font-size:11px;gap:6px}.nav .ico{font-size:14px}.topbar{height:58px;padding:0 16px}.search{display:none}.content{padding:22px 14px}.welcome{align-items:flex-start;flex-direction:column}.h1{font-size:26px}.stats{gap:9px}.stat{padding:13px}.stat-num{font-size:21px}.stat-top{font-size:10px}.layout{display:block}.right-column{display:block}.right-column .panel{margin-bottom:14px}.panel{padding:15px}.store-products{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:1fr}.field.full{grid-column:auto}.welcome .actions{width:100%}.welcome .actions button{flex:1}.top-actions .crumb{display:none}}
+
+/* ShopPilot orange + charcoal theme overrides */
+:root{--navy:#17212B;--green:#FF6B00;--lime:#FFB000;--bg:#FFF8F1;--card:#fff;--text:#17212B;--muted:#77736F;--line:#F0E3D8;--soft:#FFF0E3;--red:#D94F45;--shadow:0 8px 28px rgba(60,35,15,.07)}
+body{background:var(--bg);color:var(--text)}
+.sidebar{background:#17212B}
+.brand span small{color:#D7C9BE}
+.nav-label{color:#C1B4A9}
+.nav button{color:#EDE5DE}
+.nav button.active,.nav button:hover{background:#303D49;color:#fff}
+.logo,.side-bottom button{background:#FFB000;color:#17212B}
+.side-bottom{background:#25323D}
+.primary,.primary:hover{background:#FF6B00;color:#fff;box-shadow:0 3px 8px rgba(255,107,0,.18)}
+.eyebrow,.panel-head a,.text-btn{color:#FF6B00}
+.stat-icon{background:#FFF0E3;color:#FF6B00}
+.trend{color:#D95D00}
+.dot{background:#FF6B00}
+.dot.lime{background:#FFB000}
+.bar i{background:#FF6B00}
+.bar i.low{background:#FFB000}
+.chart{background:repeating-linear-gradient(to bottom,transparent 0,transparent 44px,#F0E3D8 45px,#F0E3D8 46px)}
+.chart svg path[stroke="#2f765b"]{stroke:#FF6B00}
+.chart svg path[stroke="#b8d958"]{stroke:#FFB000}
+.chart svg path[stroke="#72a98b"]{stroke:#FF6B00}
+.chart svg circle[fill="#2f765b"]{fill:#FF6B00}
+.chart svg circle[fill="#b8d958"]{fill:#FFB000}
+.store-banner{background:#FFF0E3}
+.product-icon{background:#FFF0E3}
+.modal-backdrop{background:rgba(23,33,43,.68)}
+.toast{background:#17212B;color:#fff}
+.avatar{background:#FFE3CC;color:#8A3900}
+.pill{background:#FFF0E3;color:#9A4800}
+.pill.warn{background:#FFF4D6;color:#8A5A00}
+@media(max-width:680px){.sidebar{background:#17212B}}
+
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="sidebar">
+  <div class="brand"><div class="logo">S</div><span>ShopPilot<small>YOUR BUSINESS, IN CONTROL</small></span></div>
+  <div class="nav-label">WORKSPACE</div>
+  <nav class="nav" aria-label="Main navigation">
+    <button class="active" data-page="dashboard"><span class="ico">▦</span>Overview</button>
+    <button data-page="sales"><span class="ico">↗</span>Sales</button>
+    <button data-page="inventory"><span class="ico">▤</span>Inventory</button>
+    <button data-page="expenses"><span class="ico">↘</span>Expenses</button>
+    <button data-page="customers"><span class="ico">♙</span>Customers</button>
+    <button data-page="store"><span class="ico">⌂</span>Online store</button>
+    <button data-page="approvals"><span class="ico">✓</span>Sales approvals</button>
+    <button data-page="departments"><span class="ico">▥</span>Departments</button>
+    <button data-page="team"><span class="ico">♙</span>Workers & roles</button>
+    <button data-page="assignments"><span class="ico">⇄</span>Product assignments</button>
+    <button data-page="reports"><span class="ico">▧</span>Reports</button>
+    <button data-page="activity"><span class="ico">◷</span>Activity log</button>
+  </nav>
+  <div class="side-bottom"><b>Your business, growing.</b><p>Keep your stock, sales and money organised in one place.</p><button onclick="showToast('Plans will be available after launch.')">Explore ShopPilot Pro ↗</button></div>
+</aside>
+<main class="main">
+  <header class="topbar"><div class="crumb">Workspace / <b id="crumbName">Overview</b></div><div class="top-actions"><button class="secondary" id="authButton" onclick="openAuthModal()">Sign in</button><div class="avatar" id="userAvatar">SP</div></div></header>
+  <div class="content">
+    <section class="page active" id="page-dashboard">
+      <div class="welcome"><div><div class="eyebrow">SATURDAY, 24 OCTOBER</div><h1 class="h1">Good evening 👋</h1><div class="sub">Here's what's happening with your business today.</div></div><div class="actions"><button class="secondary" onclick="openModal('expense')">＋ Add expense</button><button class="primary" onclick="openModal('sale')">＋ Record a sale</button></div></div>
+      <div class="stats">
+        <div class="stat"><div class="stat-top">Today's sales <span class="stat-icon">↗</span></div><div class="stat-num" id="statSales">₦184,500</div><div class="trend">↑ 12.8% <span class="muted">vs. yesterday</span></div></div>
+        <div class="stat"><div class="stat-top">Estimated profit <span class="stat-icon">◈</span></div><div class="stat-num" id="statProfit">₦52,300</div><div class="trend">↑ 8.2% <span class="muted">vs. yesterday</span></div></div>
+        <div class="stat"><div class="stat-top">Products in stock <span class="stat-icon">▤</span></div><div class="stat-num" id="statStock">248</div><div class="trend"><span class="pill warn">4 items low</span></div></div>
+        <div class="stat" role="button" tabindex="0" onclick="go('approvals')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();go('approvals')}"><div class="stat-top">Sales awaiting approval <span class="stat-icon">✓</span></div><div class="stat-num">—</div><div class="trend">Owner / supervisor review</div></div>
+      </div>
+      <div class="layout">
+        <div>
+          <div class="panel"><div class="panel-head"><h2>Sales overview</h2><select class="period" onchange="showToast('Chart period changed in this demo.')"><option>This week</option><option>This month</option><option>This year</option></select></div><div class="chart"><svg viewBox="0 0 600 180" preserveAspectRatio="none" role="img" aria-label="Illustrative weekly sales chart"><defs><linearGradient id="fill" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#72a98b" stop-opacity=".3"/><stop offset="1" stop-color="#72a98b" stop-opacity="0"/></linearGradient></defs><path d="M0,140 C40,125 55,145 95,110 S155,130 195,88 S260,100 300,75 S365,98 400,48 S465,80 500,44 S560,55 600,18 L600,180 L0,180 Z" fill="url(#fill)"/><path d="M0,140 C40,125 55,145 95,110 S155,130 195,88 S260,100 300,75 S365,98 400,48 S465,80 500,44 S560,55 600,18" fill="none" stroke="#2f765b" stroke-width="3" stroke-linecap="round"/><path d="M0,158 C50,150 65,132 95,145 S160,155 195,130 S260,144 300,118 S365,128 400,100 S465,120 500,90 S560,104 600,76" fill="none" stroke="#b8d958" stroke-width="2.5" stroke-linecap="round"/></svg></div><div class="days"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div><div class="legend" style="margin-top:15px"><span><i class="dot"></i>Sales</span><span><i class="dot lime"></i>Profit trend</span><span class="muted">Illustrative demo data</span></div></div>
+          <div class="panel"><div class="panel-head"><h2>Recent sales</h2><button class="text-btn" onclick="go('sales')">View all →</button></div><div class="table-wrap"><table><thead><tr><th>Product / Order</th><th>Time</th><th>Payment</th><th style="text-align:right">Amount</th></tr></thead><tbody id="recentSales"><tr><td><b>Perfume gift set</b><br><span class="muted">#SP-1048 · 2 items</span></td><td>4:42 PM</td><td><span class="pill">Paid</span></td><td style="text-align:right"><b>₦28,000</b></td></tr><tr><td><b>Wireless earbuds</b><br><span class="muted">#SP-1047 · 1 item</span></td><td>3:58 PM</td><td><span class="pill">Paid</span></td><td style="text-align:right"><b>₦18,500</b></td></tr><tr><td><b>Body lotion</b><br><span class="muted">#SP-1046 · 3 items</span></td><td>2:31 PM</td><td><span class="pill">Paid</span></td><td style="text-align:right"><b>₦12,000</b></td></tr></tbody></table></div></div>
+        </div>
+        <div class="right-column">
+          <div class="panel"><div class="panel-head"><h2>Low stock alerts</h2><button class="text-btn" onclick="go('inventory')">Manage →</button></div><div id="lowStock"></div></div>
+          <div class="panel"><div class="panel-head"><h2>Quick actions</h2></div><div class="list">
+            <div class="item" style="cursor:pointer" onclick="openModal('product')"><div class="product-icon" style="background:#edf4ef">＋</div><div class="item-main"><b>Add a product</b><small>Update your inventory</small></div><span>→</span></div>
+            <div class="item" style="cursor:pointer" onclick="openModal('sale')"><div class="product-icon" style="background:#f4f0e5">₦</div><div class="item-main"><b>Record a sale</b><small>Keep sales up to date</small></div><span>→</span></div>
+            <div class="item" style="cursor:pointer" onclick="go('store')"><div class="product-icon" style="background:#eaf0fb">⌂</div><div class="item-main"><b>View online store</b><small>See your customer view</small></div><span>→</span></div>
+          </div></div>
+          <div class="panel"><div class="panel-head"><h2>Business snapshot</h2><span class="pill">Today</span></div><div class="item"><div class="item-main"><b>Orders completed</b><small>Across all channels</small></div><strong>24</strong></div><div class="item"><div class="item-main"><b>Expenses recorded</b><small>Today's total</small></div><strong id="expenseSnapshot">₦18,200</strong></div><div class="item"><div class="item-main"><b>Average order</b><small>Per completed sale</small></div><strong>₦7,688</strong></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="page" id="page-sales"><div class="welcome"><div><div class="eyebrow">YOUR TRANSACTIONS</div><h1 class="h1">Sales</h1><div class="sub">Track every sale and keep payment records in one place.</div></div><button class="primary" onclick="openModal('sale')">＋ Record a sale</button></div><div class="stats"><div class="stat"><div class="stat-top">Today's sales</div><div class="stat-num" id="salesPageTotal">₦184,500</div></div><div class="stat"><div class="stat-top">Transactions</div><div class="stat-num" id="salesCount">24</div></div><div class="stat"><div class="stat-top">Average sale</div><div class="stat-num">₦7,688</div></div></div><div class="panel"><div class="panel-head"><h2>All sales</h2><span class="muted">Demo transactions</span></div><div class="table-wrap"><table><thead><tr><th>Order</th><th>Item</th><th>Time</th><th>Payment</th><th style="text-align:right">Amount</th></tr></thead><tbody id="salesTable"></tbody></table></div></div></section>
+    <section class="page" id="page-inventory"><div class="welcome"><div><div class="eyebrow">PRODUCTS & STOCK</div><h1 class="h1">Inventory</h1><div class="sub">Know what you have, what is selling, and what needs restocking.</div></div><button class="primary" onclick="openModal('product')">＋ Add product</button></div><div class="stats"><div class="stat"><div class="stat-top">Products</div><div class="stat-num" id="productCount">8</div></div><div class="stat"><div class="stat-top">Units in stock</div><div class="stat-num" id="stockTotal">248</div></div><div class="stat"><div class="stat-top">Low stock items</div><div class="stat-num" id="lowCount">4</div></div><div class="stat"><div class="stat-top">Stock value</div><div class="stat-num">₦2.4m</div></div></div><div class="panel"><div class="panel-head"><h2>All products</h2><input id="inventorySearch" placeholder="Search products…" class="period" oninput="renderInventory()"></div><div class="table-wrap"><table><thead><tr><th>Product</th><th>SKU</th><th>Category</th><th>Price</th><th>In stock</th><th>Status</th></tr></thead><tbody id="inventoryTable"></tbody></table></div></div></section>
+    <section class="page" id="page-expenses"><div class="welcome"><div><div class="eyebrow">MONEY OUT</div><h1 class="h1">Expenses</h1><div class="sub">Record business spending so profit estimates stay meaningful.</div></div><button class="primary" onclick="openModal('expense')">＋ Add expense</button></div><div class="stats"><div class="stat"><div class="stat-top">Today's expenses</div><div class="stat-num" id="expenseTotal">₦18,200</div></div><div class="stat"><div class="stat-top">Entries</div><div class="stat-num" id="expenseCount">4</div></div><div class="stat"><div class="stat-top">Largest category</div><div class="stat-num" style="font-size:19px">Transport</div></div><div class="stat"><div class="stat-top">This month</div><div class="stat-num">₦326k</div></div></div><div class="panel"><div class="panel-head"><h2>Recent expenses</h2><span class="muted">Demo records</span></div><div class="table-wrap"><table><thead><tr><th>Description</th><th>Category</th><th>Date</th><th style="text-align:right">Amount</th></tr></thead><tbody id="expenseTable"></tbody></table></div></div></section>
+    <section class="page" id="page-customers"><div class="welcome"><div><div class="eyebrow">PEOPLE WHO BUY FROM YOU</div><h1 class="h1">Customers</h1><div class="sub">Keep your customer records and purchase history organised.</div></div><button class="primary" onclick="showToast('Customer management will be enabled in a future build.')">＋ Add customer</button></div><div class="stats"><div class="stat"><div class="stat-top">Customers</div><div class="stat-num">186</div></div><div class="stat"><div class="stat-top">Repeat customers</div><div class="stat-num">64%</div></div><div class="stat"><div class="stat-top">New this month</div><div class="stat-num">28</div></div></div><div class="panel"><div class="panel-head"><h2>Customer records</h2></div><table><thead><tr><th>Customer</th><th>Last purchase</th><th>Phone</th></tr></thead><tbody><tr><td><b>Amaka Okafor</b></td><td>Today</td><td>080 •••• 2190</td></tr><tr><td><b>Daniel Musa</b></td><td>Yesterday</td><td>080 •••• 6631</td></tr><tr><td><b>Grace Bello</b></td><td>22 Oct</td><td>080 •••• 0812</td></tr></tbody></table></div></section>
+    <section class="page" id="page-store"><div class="welcome"><div><div class="eyebrow">SELL ONLINE</div><h1 class="h1">Your online store</h1><div class="sub">A simple storefront customers can browse from any device.</div></div><button class="secondary" onclick="showToast('Store link sharing will be enabled when hosting is connected.')">↗ Share store</button></div><div class="store-banner"><div><div class="eyebrow">STOREFRONT PREVIEW</div><h2>Everyday Essentials</h2><div class="sub">A sample shop powered by ShopPilot</div></div><span class="pill">Preview only</span></div><div class="panel"><div class="panel-head"><h2>Featured products</h2><span class="muted">Sample catalogue</span></div><div class="store-products" id="storeProducts"></div></div><div class="sub">This is a demonstration storefront. Orders and payments are not live.</div></section>
+    <section class="page" id="page-approvals"><div class="welcome"><div><div class="eyebrow">OWNER / SUPERVISOR WORKFLOW</div><h1 class="h1">Sales approvals</h1><div class="sub">Review submitted sales. Pending stock is reserved; stock is deducted only after approval.</div></div></div><div class="stats"><div class="stat"><div class="stat-top">Awaiting review</div><div class="stat-num">—</div><div class="sub">Live records load after sign-in</div></div><div class="stat"><div class="stat-top">Paid, awaiting approval</div><div class="stat-num">—</div></div><div class="stat"><div class="stat-top">Rejected</div><div class="stat-num">—</div></div><div class="stat"><div class="stat-top">Stock reserved</div><div class="stat-num">—</div></div></div><div class="panel"><div class="panel-head"><h2>Approval queue</h2><span class="pill warn">Database sign-in required</span></div><div class="empty">The approval queue will display real pending sales after an authenticated owner or supervisor session is connected. No demo approvals are shown as real.</div></div></section>
+    <section class="page" id="page-departments"><div class="welcome"><div><div class="eyebrow">BUSINESS STRUCTURE</div><h1 class="h1">Departments</h1><div class="sub">Organise teams and reporting by department.</div></div></div><div class="panel"><div class="panel-head"><h2>Departments</h2><span class="pill warn">Sign-in required</span></div><div class="empty">Your database currently has the default General department. Department management will be connected to the departments table.</div></div></section>
+    <section class="page" id="page-team"><div class="welcome"><div><div class="eyebrow">PEOPLE & ACCESS</div><h1 class="h1">Workers & roles</h1><div class="sub">Manage owner, supervisor and worker access.</div></div></div><div class="panel"><div class="panel-head"><h2>Team members</h2><span class="pill warn">Sign-in required</span></div><div class="empty">Team records will load from profiles. Worker accounts must be created through Supabase Auth; never share an owner login with staff.</div></div></section>
+    <section class="page" id="page-assignments"><div class="welcome"><div><div class="eyebrow">ACCESS CONTROL</div><h1 class="h1">Product assignments</h1><div class="sub">Control which products each worker is permitted to sell.</div></div></div><div class="panel"><div class="panel-head"><h2>Worker product access</h2><span class="pill warn">Sign-in required</span></div><div class="empty">Assignments will load from worker_product_assignments. Server-side permission checks remain authoritative.</div></div></section>
+    <section class="page" id="page-reports"><div class="welcome"><div><div class="eyebrow">BUSINESS PERFORMANCE</div><h1 class="h1">Reports & analytics</h1><div class="sub">Review sales, margins, expenses, stock and worker performance.</div></div></div><div class="stats"><div class="stat"><div class="stat-top">Sales</div><div class="stat-num">—</div><div class="sub">Awaiting live database data</div></div><div class="stat"><div class="stat-top">Gross profit</div><div class="stat-num">—</div></div><div class="stat"><div class="stat-top">Expenses</div><div class="stat-num">—</div></div><div class="stat"><div class="stat-top">Net result</div><div class="stat-num">—</div></div></div><div class="panel"><div class="empty">Reports will be calculated from approved sales and recorded expenses, not sample figures.</div></div></section>
+    <section class="page" id="page-activity"><div class="welcome"><div><div class="eyebrow">ACCOUNTABILITY</div><h1 class="h1">Activity log</h1><div class="sub">See who submitted, approved, rejected or changed business records.</div></div></div><div class="panel"><div class="panel-head"><h2>Recent activity</h2><span class="pill warn">Sign-in required</span></div><div class="empty">Activity events will load from the activity_log table after authenticated access is available.</div></div></section>
+
+  </div>
+</main>
+</div>
+<div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle"><div class="modal"><div class="modal-head"><h2 id="modalTitle">Record a sale</h2><button class="close" onclick="closeModal()" aria-label="Close">×</button></div><form id="actionForm"><div id="modalFields" class="form-grid"></div><div class="modal-footer"><button type="button" class="secondary" onclick="closeModal()">Cancel</button><button type="submit" class="primary" id="modalSubmit">Save record</button></div></form></div></div>
+<div class="modal-backdrop" id="authBackdrop" role="dialog" aria-modal="true" aria-labelledby="authTitle"><div class="modal"><div class="modal-head"><div><div class="eyebrow">SECURE ACCOUNT ACCESS</div><h2 id="authTitle">Sign in to ShopPilot</h2></div><button class="close" onclick="closeAuthModal()" aria-label="Close">×</button></div><form id="authForm"><div class="form-grid"><div class="field full"><label for="authEmail">Email address</label><input id="authEmail" type="email" autocomplete="username" required placeholder="owner@example.com"></div><div class="field full"><label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" required placeholder="Your password"></div></div><p class="sub" id="authMessage" aria-live="polite">Use your existing ShopPilot owner account. Never share its password with workers.</p><div class="modal-footer"><button type="button" class="secondary" onclick="closeAuthModal()">Cancel</button><button type="submit" class="primary" id="authSubmit">Sign in</button></div></form></div></div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const products=[
+{id:1,name:"Signature perfume",sku:"PRF-001",category:"Beauty",price:18000,cost:11000,stock:4,icon:"🧴"},
+{id:2,name:"Wireless earbuds",sku:"ELC-014",category:"Electronics",price:18500,cost:12000,stock:7,icon:"🎧"},
+{id:3,name:"Body lotion",sku:"BTY-022",category:"Beauty",price:6500,cost:3900,stock:3,icon:"🧴"},
+{id:4,name:"Classic T-shirt",sku:"CLT-006",category:"Clothing",price:9000,cost:4500,stock:32,icon:"👕"},
+{id:5,name:"Kitchen blender",sku:"HOM-011",category:"Home",price:42000,cost:31000,stock:18,icon:"🥤"},
+{id:6,name:"Leather handbag",sku:"FAS-017",category:"Fashion",price:27000,cost:16000,stock:2,icon:"👜"},
+{id:7,name:"Phone charger",sku:"ELC-009",category:"Electronics",price:7500,cost:4000,stock:56,icon:"🔌"},
+{id:8,name:"Running sneakers",sku:"SHO-008",category:"Footwear",price:35000,cost:24000,stock:126,icon:"👟"}];
+let sales=[
+{id:"SP-1048",name:"Perfume gift set",time:"4:42 PM",amount:28000,payment:"Paid",qty:2},
+{id:"SP-1047",name:"Wireless earbuds",time:"3:58 PM",amount:18500,payment:"Paid",qty:1},
+{id:"SP-1046",name:"Body lotion",time:"2:31 PM",amount:12000,payment:"Paid",qty:3}
+];
+let expenses=[
+{desc:"Shop transport",category:"Transport",date:"Today",amount:8200},
+{desc:"Packaging materials",category:"Supplies",date:"Today",amount:4500},
+{desc:"Mobile data",category:"Utilities",date:"Today",amount:2500},
+{desc:"Cleaning supplies",category:"Supplies",date:"Today",amount:3000}
+];
+let salesTotal=184500,expensesTotal=18200,orderNum=1049;
+let profitTotal=52300;  
+const STORAGE_KEY = "shoppilot_saved_data";
+
+function saveData() {
+  try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({
+      products,
+      sales,
+      expenses,
+      salesTotal,
+      expensesTotal,
+      orderNum,
+      profitTotal
+    }));
+  } catch (error) {
+    console.error("Could not save ShopPilot data", error);
+  }
+}
+function loadSavedData() { 
+  try {
+    const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+    if (!saved) return;
+
+    if (Array.isArray(saved.products)) {
+      products.splice(0, products.length, ...saved.products);
+    }
+    if (Array.isArray(saved.sales)) sales = saved.sales;
+    if (Array.isArray(saved.expenses)) expenses = saved.expenses;
+    if (Number.isFinite(saved.salesTotal)) salesTotal = saved.salesTotal;
+if (Number.isFinite(saved.expensesTotal)) expensesTotal = saved.expensesTotal;
+if (Number.isFinite(saved.orderNum)) orderNum = saved.orderNum;
+if (Number.isFinite(saved.profitTotal)) profitTotal = saved.profitTotal;
+  } catch (error) {
+
+
+    console.error("Could not load ShopPilot data", error);
+  }
+}
+
+loadSavedData();
+
+const money=n=>"₦"+Math.round(n).toLocaleString("en-NG");
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function showToast(msg){const t=document.getElementById("toast");t.textContent=msg;t.classList.add("show");clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.classList.remove("show"),2600)}
+function go(page){document.querySelectorAll(".nav button").forEach(b=>b.classList.toggle("active",b.dataset.page===page));document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id==="page-"+page));document.getElementById("crumbName").textContent=({dashboard:"Overview",sales:"Sales",inventory:"Inventory",expenses:"Expenses",customers:"Customers",store:"Online store",approvals:"Sales approvals",departments:"Departments",team:"Workers & roles",assignments:"Product assignments",reports:"Reports",activity:"Activity log"})[page]||page;window.scrollTo({top:0,behavior:"smooth"});if(page==="sales")renderSales();if(page==="inventory")renderInventory();if(page==="expenses")renderExpenses();if(page==="store")renderStore()}
+document.querySelectorAll(".nav button").forEach(b=>b.addEventListener("click",()=>go(b.dataset.page)));
+function renderLowStock(){const low=products.filter(p=>p.stock<=7);document.getElementById("lowStock").innerHTML=low.map(p=>`<div class="stock-row"><div class="product-icon">${p.icon}</div><div class="item-main"><b>${esc(p.name)}</b><div class="bar"><i class="${p.stock<=4?"low":""}" style="width:${Math.max(12,Math.min(100,p.stock/20*100))}%"></i></div></div><span class="stock-count">${p.stock} left</span></div>`).join("")||'<div class="empty">All products are well stocked.</div>';document.getElementById("statStock").textContent=products.reduce((a,p)=>a+p.stock,0);document.getElementById("productCount").textContent=products.length;document.getElementById("stockTotal").textContent=products.reduce((a,p)=>a+p.stock,0);document.getElementById("lowCount").textContent=low.length}
+function renderInventory(){const q=(document.getElementById("inventorySearch")?.value||"").toLowerCase();const filtered=products.filter(p=>(p.name+" "+p.category+" "+p.sku).toLowerCase().includes(q));document.getElementById("inventoryTable").innerHTML=filtered.map(p=>`<tr><td><b>${p.icon} ${esc(p.name)}</b></td><td>${p.sku}</td><td>${p.category}</td><td>${money(p.price)}</td><td>${p.stock}</td><td><span class="pill ${p.stock<=4?"red":p.stock<=7?"warn":""}">${p.stock<=4?"Low stock":p.stock<=7?"Restock soon":"In stock"}</span></td></tr>`).join("")||'<tr><td colspan="6" class="empty">No matching products.</td></tr>';renderLowStock()}
+function renderSales(){document.getElementById("salesPageTotal").textContent=money(salesTotal);document.getElementById("salesCount").textContent=24+sales.length-3;const rows=sales.map(s=>`<tr><td><b>#${s.id}</b></td><td>${esc(s.name)}</td><td>${s.time}</td><td><span class="pill ${s.payment==="Paid"?"":"warn"}">${s.payment}</span></td><td style="text-align:right"><b>${money(s.amount)}</b></td></tr>`).join("");document.getElementById("salesTable").innerHTML=rows}
+function renderExpenses(){document.getElementById("expenseTotal").textContent=money(expensesTotal);document.getElementById("expenseSnapshot").textContent=money(expensesTotal);document.getElementById("expenseCount").textContent=expenses.length;document.getElementById("expenseTable").innerHTML=expenses.map(e=>`<tr><td><b>${esc(e.desc)}</b></td><td>${esc(e.category)}</td><td>${e.date}</td><td style="text-align:right"><b>${money(e.amount)}</b></td></tr>`).join("")}
+function renderStore(){document.getElementById("storeProducts").innerHTML=products.slice(0,6).map(p=>`<div class="store-product"><div class="product-icon">${p.icon}</div><b>${esc(p.name)}</b><small>${esc(p.category)}</small><strong>${money(p.price)}</strong><button class="secondary" style="width:100%;margin-top:10px" onclick="showToast('Customer checkout is not connected in this prototype.')">Enquire to buy</button></div>`).join("")}
+function renderRecent(){document.getElementById("recentSales").innerHTML=sales.slice(0,5).map(s=>`<tr><td><b>${esc(s.name)}</b><br><span class="muted">#${s.id} · ${s.qty} item(s)</span></td><td>${s.time}</td><td><span class="pill ${s.payment==="Paid"?"":"warn"}">${s.payment}</span></td><td style="text-align:right"><b>${money(s.amount)}</b></td></tr>`).join("")}
+let activeModal="";
+function openModal(type){activeModal=type;const fields=document.getElementById("modalFields");const title=document.getElementById("modalTitle");const submit=document.getElementById("modalSubmit");if(type==="sale"){title.textContent="Record a sale";submit.textContent="Save sale";fields.innerHTML=`<div class="field full"><label for="saleProduct">Product</label><select id="saleProduct" name="product" required>${products.map(p=>`<option value="${p.id}">${esc(p.name)} — ${money(p.price)} (${p.stock} in stock)</option>`).join("")}</select></div><div class="field"><label for="saleQty">Quantity</label><input id="saleQty" name="qty" type="number" min="1" value="1" required></div><div class="field"><label for="salePayment">Payment status</label><select id="salePayment" name="payment"><option value="Paid">Fully paid</option></select></div><div class="field full"><label for="saleCustomer">Customer (optional)</label><input id="saleCustomer" name="customer" placeholder="Customer name"></div><div class="field full"><label>Estimated total</label><input id="salePreview" value="${money(products[0].price)}" readonly></div>`;setTimeout(()=>{const prod=document.getElementById("saleProduct"),qty=document.getElementById("saleQty");function calc(){const p=products.find(x=>x.id===Number(prod.value));document.getElementById("salePreview").value=money(p.price*Math.max(1,Number(qty.value)||1))}prod.addEventListener("change",calc);qty.addEventListener("input",calc)},0)}else if(type==="expense"){title.textContent="Add an expense";submit.textContent="Save expense";fields.innerHTML=`<div class="field full"><label for="expenseDesc">Description</label><input id="expenseDesc" name="desc" placeholder="e.g. Delivery fuel" required></div><div class="field"><label for="expenseAmount">Amount (₦)</label><input id="expenseAmount" name="amount" type="number" min="1" placeholder="5000" required></div><div class="field"><label for="expenseCategory">Category</label><select id="expenseCategory" name="category"><option>Transport</option><option>Supplies</option><option>Utilities</option><option>Rent</option><option>Marketing</option><option>Other</option></select></div>`}else{title.textContent="Add a product";submit.textContent="Add product";fields.innerHTML=`<div class="field full"><label for="prodName">Product name</label><input id="prodName" name="name" placeholder="e.g. Everyday tote bag" required></div><div class="field"><label for="prodPrice">Selling price (₦)</label><input id="prodPrice" name="price" type="number" min="1" placeholder="12000" required></div><div class="field"><label for="prodCost">Unit cost (₦)</label><input id="prodCost" name="cost" type="number" min="0" placeholder="7000" required></div><div class="field"><label for="prodStock">Opening stock</label><input id="prodStock" name="stock" type="number" min="0" value="1" required></div><div class="field"><label for="prodCategory">Category</label><select id="prodCategory" name="category"><option>General</option><option>Beauty</option><option>Clothing</option><option>Electronics</option><option>Food</option><option>Home</option><option>Services</option></select></div>`}document.getElementById("modalBackdrop").classList.add("show")}
+function closeModal(){document.getElementById("modalBackdrop").classList.remove("show")}
+document.getElementById("modalBackdrop").addEventListener("click",e=>{if(e.target.id==="modalBackdrop")closeModal()});
+document.getElementById("actionForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const data = Object.fromEntries(new FormData(e.target));
+
+  if (activeModal === "sale") {
+    const p = products.find(x => x.id === Number(data.product));
+
+    if (!p) {
+      showToast("Please select a valid product.");
+      return;
+    }
+
+    const qty = Math.max(1, Number(data.qty));
+
+    if (qty > p.stock) {
+      showToast("Not enough stock for that quantity.");
+      return;
+    }
+
+    if (data.payment !== "Paid") {
+      showToast("Only fully paid sales can be submitted.");
+      return;
+    }
+    if (!window.supabaseClient) {
+      showToast("Database client is unavailable. Please refresh and try again.");
+      return;
+    }
+    const { data: sessionData } = await window.supabaseClient.auth.getSession();
+    if (!sessionData.session) {
+      showToast("Please sign in before submitting a sale. No stock has been deducted.");
+      return;
+    }
+    const { data: saleId, error } = await window.supabaseClient.rpc("submit_sale", {
+      p_items: [{ product_id: Number(data.product), quantity: qty }],
+      p_customer_name: data.customer || null,
+      p_notes: "Payment marked as received by staff; owner approval is still required."
+    });
+    if (error) {
+      console.error("ShopPilot sale submission failed", error);
+      showToast(error.message || "Sale could not be submitted.");
+      return;
+    }
+    showToast("Sale submitted for review. Stock remains reserved until approval.");
+    closeModal();
+    e.target.reset();
+    return;
+
+  } else if (activeModal === "expense") {
+    const amount = Number(data.amount);
+
+    if (!Number.isFinite(amount) || amount <= 0) {
+      showToast("Please enter a valid expense amount.");
+      return;
+    }
+
+    expenses.unshift({
+      desc: data.desc,
+      category: data.category,
+      date: "Today",
+      amount
+    });
+
+    expensesTotal += amount;
+    profitTotal -= amount;
+
+    renderExpenses();
+
+    document.getElementById("statProfit").textContent = money(profitTotal);
+
+    showToast("Expense added successfully.");
+
+  } else {
+    const id = products.length + 1;
+
+    products.unshift({
+      id,
+      name: data.name,
+      sku: "NEW-" + String(id).padStart(3, "0"),
+      category: data.category,
+      price: Number(data.price),
+      cost: Number(data.cost),
+      stock: Number(data.stock),
+      icon: "📦"
+    });
+
+    renderInventory();
+    renderStore();
+
+    showToast("Product added successfully.");
+  }
+
+  saveData();
+  closeModal();
+  e.target.reset();
+});
+;
+renderLowStock();renderInventory();renderRecent();renderSales();renderExpenses();renderStore();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+  const SUPABASE_URL = "https://sxueakfomnxlwjdfcuis.supabase.co";
+  const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_BepQcE7Mi-T0rLezTZUk3w_4DVuEXef";
+
+  const supabaseClient = window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+  window.supabaseClient = supabaseClient;
+  function updateAuthUI(session) {
+    const button = document.getElementById("authButton");
+    const avatar = document.getElementById("userAvatar");
+    if (!button || !avatar) return;
+    if (session?.user) {
+      const email = session.user.email || "Signed in";
+      button.textContent = "Sign out";
+      button.onclick = async () => {
+        const { error } = await supabaseClient.auth.signOut();
+        if (error) showToast(error.message); else { updateAuthUI(null); showToast("You have signed out."); }
+      };
+      avatar.textContent = (email[0] || "S").toUpperCase();
+      button.title = email;
+    } else {
+      button.textContent = "Sign in";
+      button.onclick = openAuthModal;
+      avatar.textContent = "SP";
+      button.title = "Sign in with your ShopPilot account";
+    }
+  }
+  function openAuthModal() {
+    document.getElementById("authMessage").textContent = "Use your existing ShopPilot owner account. Never share its password with workers.";
+    document.getElementById("authBackdrop").classList.add("show");
+  }
+  function closeAuthModal() { document.getElementById("authBackdrop").classList.remove("show"); }
+  document.getElementById("authBackdrop").addEventListener("click", e => { if (e.target.id === "authBackdrop") closeAuthModal(); });
+  document.getElementById("authForm").addEventListener("submit", async e => {
+    e.preventDefault();
+    const submit = document.getElementById("authSubmit");
+    const message = document.getElementById("authMessage");
+    submit.disabled = true; submit.textContent = "Signing in…";
+    const email = document.getElementById("authEmail").value.trim();
+    const password = document.getElementById("authPassword").value;
+    const { data, error } = await supabaseClient.auth.signInWithPassword({ email, password });
+    submit.disabled = false; submit.textContent = "Sign in";
+    if (error) { message.textContent = error.message; return; }
+    updateAuthUI(data.session);
+    closeAuthModal();
+    document.getElementById("authForm").reset();
+    showToast("Signed in successfully. Live modules can now use your authenticated session.");
+  });
+  supabaseClient.auth.getSession().then(({ data, error }) => {
+    if (error) console.error("Could not restore ShopPilot session", error);
+    updateAuthUI(data?.session || null);
+  });
+  supabaseClient.auth.onAuthStateChange((_event, session) => updateAuthUI(session));
+  console.log("ShopPilot Supabase client initialized; sign-in is available.");
+</script>
+</body>
+</html>
